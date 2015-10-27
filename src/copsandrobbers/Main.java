@@ -1,4 +1,4 @@
-package edu.neumont.cs370;
+package copsandrobbers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Coordinate> crimesCommited = new ArrayList<>();
-        NumberGenerator coordinateGenerator = new NumberGenerator(0, 1000);
+        RandomNumberGenerator coordinateGenerator = new RandomNumberGenerator(0, 1000);
 
     }
 }

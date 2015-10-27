@@ -1,4 +1,4 @@
-package edu.neumont.cs370;
+package copsandrobbers;
 
 /**
  * Created by jjensen on 10/26/15.

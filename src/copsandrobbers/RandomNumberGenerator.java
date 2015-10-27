@@ -1,15 +1,15 @@
-package edu.neumont.cs370;
+package copsandrobbers;
 
 /**
  * Created by jjensen on 10/26/15.
  */
-public class NumberGenerator {
+public class RandomNumberGenerator {
 
     private int min;
     private int max;
     private int currentNumber = 0;
 
-    public NumberGenerator(int min, int max) {
+    public RandomNumberGenerator(int min, int max) {
         this.min = min;
         this.max = max;
         currentNumber = min;
