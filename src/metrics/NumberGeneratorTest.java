@@ -1,7 +1,7 @@
 package metrics;
 
 import copsandrobbers.Coordinate;
-import copsandrobbers.RandomNumberGenerator;
+import copsandrobbers.RandomNumberAdvanced;
 
 /**
  * Created by gh255013 on 10/27/15.
@@ -12,7 +12,7 @@ import copsandrobbers.RandomNumberGenerator;
 public class NumberGeneratorTest {
     public static void main(String[] args) {
         //Instatiate number generator to test here
-        RandomNumberGenerator rng = null;
+        RandomNumberAdvanced rng = new RandomNumberAdvanced(0,1000);
 
         for(int i = 0; i < 10; i++) {
             int min = 0;
@@ -22,7 +22,7 @@ public class NumberGeneratorTest {
         }
     }
 
-    private static double monteCarloPiTest(RandomNumberGenerator rng, int min, int max, int numOfPoints) {
+    private static double monteCarloPiTest(RandomNumberAdvanced rng, int min, int max, int numOfPoints) {
         int numInCircle = 0;
         int range = max - min;
 

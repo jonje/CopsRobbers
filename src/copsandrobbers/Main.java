@@ -9,7 +9,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Coordinate> crimesCommited = new ArrayList<>();
-        RandomNumberGenerator coordinateGenerator = new RandomNumberGenerator(0, 1000);
-
+        RandomNumberAdvanced coordinateGenerator = new RandomNumberAdvanced(0, 1000);
+        Coordinate coordinate = coordinateGenerator.getNextCoordinate();
+        System.out.println(coordinate.getX() + " " + coordinate.getY());
     }
 }
