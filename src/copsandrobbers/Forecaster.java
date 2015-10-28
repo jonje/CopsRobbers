@@ -7,4 +7,5 @@ import java.util.Iterator;
  */
 public interface Forecaster {
     public Coordinate getNextPrediction();
+    public void receiveCrimeCoordinate(Coordinate crime);
 }

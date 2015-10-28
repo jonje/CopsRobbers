@@ -5,13 +5,13 @@ import copsandrobbers.Coordinate;
 /**
  * Created by gh255013 on 10/28/15.
  */
-public class Prediction {
+public class PredictionResult {
     private Coordinate prediction;
     private Coordinate crime;
     private double xDifference;
     private double yDifference;
 
-    public Prediction(Coordinate prediction, Coordinate crime) {
+    public PredictionResult(Coordinate prediction, Coordinate crime) {
         this.prediction = prediction;
         this.crime = crime;
         this.xDifference = -1;
