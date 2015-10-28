@@ -50,6 +50,7 @@ public class NumberGeneratorTest {
             }
         }
         double generatedPi = closenessToPi(numInCircle, numOfPoints);
+        System.out.println("Number in circle: " + numInCircle);
 
         return calculateError(generatedPi);
     }

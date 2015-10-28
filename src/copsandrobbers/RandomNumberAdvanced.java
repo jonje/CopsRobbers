@@ -26,20 +26,22 @@ public class RandomNumberAdvanced implements RandomNumberGenerator {
 
     @Override
     public int getRandomNumber(int max) {
-        int seed = (int) (System.nanoTime()/1000);
+        long seed = (System.nanoTime());
 
-        int random_seed = seed * 1103515245 + 12345;
-        int randomNumber = (random_seed / 65536) % 32768;
+        long random_seed = seed * 110 + 12345;
+        long firstMath = (random_seed / 65536) % 32768;
+        int randomNumber = (int) firstMath % max;
         double sin = Math.sin(randomNumber);
-        randomNumber = (int) (Math.sin(randomNumber) * (max / 2) + (max / 2));
+//        randomNumber = (int) Math.round(Math.sin(randomNumber) * (max / 2) + (max / 2));
 
         if (debug) {
-            System.out.println("Seed: " + seed);
-            System.out.println("Sin: " + sin);
+//            System.out.println("Seed: " + seed);
+//            System.out.println("Sin: " + sin);
+            System.out.println(randomNumber + " : " + random_seed);
 
         }
 
-        return randomNumber;
+        return Math.abs(randomNumber);
     }
 
 
