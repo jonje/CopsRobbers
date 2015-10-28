@@ -2,6 +2,8 @@ package metrics;
 
 import copsandrobbers.Coordinate;
 import copsandrobbers.RandomNumberAdvanced;
+import copsandrobbers.randomgeneration.JavaNativeRandomNumber;
+import copsandrobbers.randomgeneration.RandomNumberGenerator;
 
 /**
  * Created by gh255013 on 10/27/15.
@@ -12,19 +14,30 @@ import copsandrobbers.RandomNumberAdvanced;
 public class NumberGeneratorTest {
     public static void main(String[] args) {
         //Instatiate number generator to test here
-        RandomNumberAdvanced rng = new RandomNumberAdvanced(0,1000);
+        RandomNumberGenerator rng = new RandomNumberAdvanced(0,1000);
 
+        System.out.println("Custom");
         for(int i = 0; i < 10; i++) {
             int min = 0;
             int max = 1000;
             int numOfPoints = 10000;
-            System.out.println(monteCarloPiTest(rng, min, max, numOfPoints));
+            System.out.println(String.format("Error is %.2f%%", monteCarloPiTest(rng, min, max, numOfPoints) * 100));
         }
+
+        System.out.println("\nJava's random");
+        rng = new JavaNativeRandomNumber(1000);
+        for(int i = 0; i < 10; i++) {
+            int min = 0;
+            int max = 1000;
+            int numOfPoints = 10000;
+            System.out.println(String.format("Error is %.2f%%", monteCarloPiTest(rng, min, max, numOfPoints) * 100));
+        }
+
     }
 
-    private static double monteCarloPiTest(RandomNumberAdvanced rng, int min, int max, int numOfPoints) {
+    private static double monteCarloPiTest(RandomNumberGenerator rng, int min, int max, int numOfPoints) {
         int numInCircle = 0;
-        int range = max - min;
+        double range = max - min;
 
         for(int i = 0; i < numOfPoints; i++) {
             Coordinate coordinate = rng.getNextCoordinate();
@@ -36,7 +49,6 @@ public class NumberGeneratorTest {
                 ++numInCircle;
             }
         }
-
         double generatedPi = closenessToPi(numInCircle, numOfPoints);
 
         return calculateError(generatedPi);
@@ -47,6 +59,6 @@ public class NumberGeneratorTest {
     }
 
     private static double calculateError(double generatedPi) {
-        return (generatedPi - Math.PI) / Math.PI * 100;
+        return (generatedPi - Math.PI) / Math.PI;
     }
 }
