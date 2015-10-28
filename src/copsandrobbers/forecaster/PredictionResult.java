@@ -14,6 +14,8 @@ public class PredictionResult {
     public PredictionResult(Coordinate prediction, Coordinate crime) {
         this.prediction = prediction;
         this.crime = crime;
+
+        // a negative default, instead of '0', because if we were perfect we want to know about it
         this.xDifference = -1;
         this.yDifference = -1;
     }
