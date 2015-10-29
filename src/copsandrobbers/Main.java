@@ -1,5 +1,8 @@
 package copsandrobbers;
 
+import copsandrobbers.randomgeneration.RandomNumberGenerator;
+import copsandrobbers.randomgeneration.TrueRandomGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +12,6 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Coordinate> crimesCommited = new ArrayList<>();
-        RandomNumberAdvanced coordinateGenerator = new RandomNumberAdvanced(0, 1000);
-        Coordinate coordinate = coordinateGenerator.getNextCoordinate();
-        System.out.println(coordinate.getX() + " " + coordinate.getY());
+       RandomNumberGenerator coordinateGenerator = new RandomNumberGenerator(0, 1000);
     }
 }
