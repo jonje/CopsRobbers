@@ -8,12 +8,12 @@ import java.net.URL;
  */
 public class HotBitsHelper {
     private byte[] buffer;
-    private int bitsToGenerate;
+    private int bytesToGenerate;
     private int positionInBuffer;
 
-    public HotBitsHelper(int bitToGenerate) {
-        this.bitsToGenerate = bitToGenerate;
-        this.buffer = new byte[bitsToGenerate];
+    public HotBitsHelper(int bytesToGenerate) {
+        this.bytesToGenerate = bytesToGenerate;
+        this.buffer = new byte[bytesToGenerate];
         this.positionInBuffer = -1;
     }
 
@@ -42,7 +42,7 @@ public class HotBitsHelper {
 
     private void fillBuffer() throws Exception {
         URL hotBitsQuery = new URL("http://www.fourmilab.ch/cgi-bin/uncgi/Hotbits?nbytes="
-                + bitsToGenerate + "&fmt=bin");
+                + bytesToGenerate + "&fmt=bin");
 
         InputStream stream = checkDataLimitExceded(hotBitsQuery.openStream());
         positionInBuffer = 0;
@@ -52,7 +52,7 @@ public class HotBitsHelper {
             buffer[positionInBuffer++] = (byte) current;
         }
 
-        System.out.println();
+//        System.out.println();
         positionInBuffer = 0;
     }
 
