@@ -1,7 +1,6 @@
 package copsandrobbers.randomgeneration;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 
 /**
@@ -12,33 +11,55 @@ public class HotBitsHelper {
     private int bitsToGenerate;
     private int positionInBuffer;
 
-    private boolean firstRun = true;
-
     public HotBitsHelper(int bitToGenerate) {
         this.bitsToGenerate = bitToGenerate;
         this.buffer = new byte[bitsToGenerate];
+        this.positionInBuffer = -1;
     }
 
-    private void fillBuffer() throws IOException {
+    private InputStream checkDataLimitExceded(InputStream input) throws Exception {
+        ByteArrayOutputStream clone = new ByteArrayOutputStream();
+
+        byte[] buffer = new byte[1024];
+        int len;
+        while ((len = input.read(buffer)) != -1 ) {
+            clone.write(buffer, 0, len);
+        }
+        clone.flush();
+
+        InputStream cloned = new ByteArrayInputStream(clone.toByteArray());
+        BufferedReader reader = new BufferedReader(new InputStreamReader(cloned));
+
+        String str;
+        while ((str = reader.readLine()) != null) {
+            if (str.contains("exceeded")) {
+                throw new Exception("Data request Rejected, 24 hour data limit reached.");
+            }
+        }
+
+        return new ByteArrayInputStream(clone.toByteArray());
+    }
+
+    private void fillBuffer() throws Exception {
         URL hotBitsQuery = new URL("http://www.fourmilab.ch/cgi-bin/uncgi/Hotbits?nbytes="
                 + bitsToGenerate + "&fmt=bin");
 
-        InputStream stream = hotBitsQuery.openStream();
+        InputStream stream = checkDataLimitExceded(hotBitsQuery.openStream());
+        positionInBuffer = 0;
 
         int current;
         while ((current = stream.read()) != -1) {
             buffer[positionInBuffer++] = (byte) current;
         }
 
+        System.out.println();
         positionInBuffer = 0;
     }
 
     public byte nextByte() {
-        if (positionInBuffer >= buffer.length || firstRun) {
+        if (positionInBuffer >= buffer.length || positionInBuffer < 0) {
             try {
                 fillBuffer();
-                positionInBuffer = 0;
-                firstRun = false;
             } catch (Exception exception) {
                 exception.printStackTrace();
             }

@@ -19,10 +19,17 @@ public class TrueRandomGenerator implements RandomNumberGenerator {
         return null;
     }
 
-    // I dont think im doing this right, but its two and im tired. Fix later.
     @Override
     public int getRandomNumber(int max) {
-        byte info = helper.nextByte();
+        int range = 0;
+
+        while (max >= range) {
+            int t = + helper.nextByte();
+            range = (range * 256) + t;
+        }
+
+        int aceptRange = (range / max) - 1;
+        int multiple = range / (aceptRange + 1);
 
         /*
          * Use rejection sampling to find a number
@@ -30,11 +37,13 @@ public class TrueRandomGenerator implements RandomNumberGenerator {
          * Note: This implementation is wasteful
          * find a better way to do this.
          */
-        while (info >= max + 1 || info < 0) {
-            info = helper.nextByte();
+        int sample = aceptRange + 1;
+
+        while (sample >= aceptRange || sample < 0) {
+            sample = helper.nextByte();
         }
 
-        return info;
+        return sample % multiple;
     }
 
     private int nextPowerOf2(int a) {
