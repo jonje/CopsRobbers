@@ -60,6 +60,7 @@ public class TrueRandomGenerator implements RandomNumberGenerator {
         }
 
         int randomInt = ByteBuffer.wrap(randomBytes).getInt();
+        System.out.println(randomInt);
         int randomIntInRange = Math.abs(randomInt % max);
 
         return randomIntInRange;
