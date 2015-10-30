@@ -36,7 +36,7 @@ public class HotBitsHelper {
         String str;
         while ((str = reader.readLine()) != null) {
             if (str.contains("exceeded")) {
-                if (currentDataSource == hotBitsUrl) {
+                if (currentDataSource.equals(hotBitsUrl)) {
                     currentDataSource = randomOrgUrl;
                     return checkDataLimitExceeded(new URL(currentDataSource).openStream());
                 } else {
@@ -62,7 +62,7 @@ public class HotBitsHelper {
     }
 
     private void fillBuffer() throws Exception {
-        URL hotBitsQuery = new URL(hotBitsUrl);
+        URL hotBitsQuery = new URL(currentDataSource);
 
         InputStream stream = checkDataLimitExceeded(hotBitsQuery.openStream());
         positionInBuffer = 0;
@@ -71,7 +71,7 @@ public class HotBitsHelper {
         while ((current = stream.read()) != -1) {
             buffer[positionInBuffer++] = (byte) current;
         }
-        
+
         positionInBuffer = 0;
     }
 

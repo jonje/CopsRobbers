@@ -60,19 +60,8 @@ public class TrueRandomGenerator implements RandomNumberGenerator {
         }
 
         int randomInt = ByteBuffer.wrap(randomBytes).getInt();
-        System.out.println(randomInt);
         int randomIntInRange = Math.abs(randomInt % max);
 
         return randomIntInRange;
-    }
-
-    private int nextPowerOf2(int a) {
-        int b = 1;
-        while (b < a)
-        {
-            b <<= 1;
-        }
-
-        return b;
     }
 }
