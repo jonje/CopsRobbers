@@ -10,16 +10,15 @@ out/*
 .idea/*
 *.iws
 
+
 ## Mac ##
 .DS_Store
 
 ### Scala ###
-*.class
 *.log
 
 # sbt specific
 .cache
 .history
-.lib/
 dist/*
 target/
