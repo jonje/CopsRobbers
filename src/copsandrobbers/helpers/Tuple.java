@@ -12,6 +12,10 @@ public class Tuple<T1, T2> {
         this.item2 = item2;
     }
 
+    public static <T1 extends Number, T2 extends Number> Tuple<Double, Double> times( double scalar, Tuple<T1, T2> tuple ) {
+        return new Tuple<>(tuple.item1.doubleValue() * scalar, tuple.item2.doubleValue() * scalar);
+    }
+
     public static <T1, T2> Tuple<T1, T2> create( T1 item1, T2 item2 ) {
         return new Tuple<>(item1, item2);
     }
