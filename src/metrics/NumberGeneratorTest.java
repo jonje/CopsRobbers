@@ -4,6 +4,7 @@ import copsandrobbers.Coordinate;
 import copsandrobbers.randomgeneration.RandomNumberAdvanced;
 import copsandrobbers.randomgeneration.JavaNativeRandomNumber;
 import copsandrobbers.randomgeneration.RandomNumberGenerator;
+import copsandrobbers.randomgeneration.TrueRandomGenerator;
 
 /**
  * Created by gh255013 on 10/27/15.
@@ -14,13 +15,13 @@ import copsandrobbers.randomgeneration.RandomNumberGenerator;
 public class NumberGeneratorTest {
     public static void main(String[] args) {
         //Instatiate number generator to test here
-        RandomNumberGenerator rng = new RandomNumberAdvanced(0,1000);
+        RandomNumberGenerator rng = new TrueRandomGenerator();
 
         System.out.println("Custom");
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 1; i++) {
             int min = 0;
             int max = 1000;
-            int numOfPoints = 10000;
+            int numOfPoints = 500;
             System.out.println(String.format("Error is %.2f%%", monteCarloPiTest(rng, min, max, numOfPoints) * 100));
         }
 

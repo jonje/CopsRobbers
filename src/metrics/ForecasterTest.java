@@ -3,8 +3,8 @@ package metrics;
 import copsandrobbers.Coordinate;
 import copsandrobbers.Forecaster;
 import copsandrobbers.RandomNumberAdvanced;
-import copsandrobbers.forecaster.ConcreteForecaster;
 import copsandrobbers.forecaster.PredictionResult;
+import copsandrobbers.forecaster.SomeNewForecaster;
 import copsandrobbers.randomgeneration.RandomNumberGenerator;
 
 import java.util.Arrays;
@@ -16,7 +16,7 @@ import java.util.Iterator;
 public class ForecasterTest {
     public static void main(String[] args) {
         RandomNumberGenerator rng = new RandomNumberAdvanced(0, 1000);
-        Forecaster forecaster = new ConcreteForecaster();
+        Forecaster forecaster = new SomeNewForecaster();
         int numOfCrimes = 1000;
 
         Iterator<PredictionResult> predictionResultIterator = runTest(rng, forecaster, numOfCrimes);

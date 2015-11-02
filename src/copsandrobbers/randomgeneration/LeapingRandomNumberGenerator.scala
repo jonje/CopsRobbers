@@ -7,7 +7,7 @@ import scala.util.Random
 /**
  * Created by stephen on 10/27/15.
  */
-class LeapingRandomNumberGenerator(val min: Int, val max: Int) extends RandomCoordinateGenerator {
+class LeapingRandomNumberGenerator(val min: Int, val max: Int) extends RandomNumberGenerator {
 
   val randomRef = new Random(1000)
 
@@ -16,6 +16,11 @@ class LeapingRandomNumberGenerator(val min: Int, val max: Int) extends RandomCoo
   val slopeY = getNextRandomInt
 
   var prevNumber = 0: Int
+
+
+  override def getRandomNumber(max: Int): Int = {
+    randomRef.nextInt(max + min) + min
+  }
 
   override def getNextCoordinate: Coordinate = {
     val leapFactor = getNextRandomInt

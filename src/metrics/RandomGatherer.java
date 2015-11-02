@@ -16,16 +16,18 @@ public class RandomGatherer {
 
         int max = 1000;
         int duplicates = 0;
-        RandomNumberGenerator generator = new RandomNumberAdvanced(0, 1000);
+        RandomNumberGenerator generator = new RandomNumberAdvanced(0, max);
         for (int i = 0; i < max; i++) {
-            int temp = generator.getRandomNumber(1000);
+            int temp = generator.getRandomNumber(max);
             if(randomNumbers.contains(temp)) {
                 duplicates++;
             }
             randomNumbers.add(temp);
         }
 
+        // Why is this iterator called?
         Iterator<Integer> iterator = randomNumbers.iterator();
+        // Why aren't the 'temps' ever used? This is an incomplete sentence
         List<Integer> temps = new ArrayList<>();
         temps.addAll(randomNumbers);
 

@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         List<Coordinate> crimesCommited = new ArrayList<>();
        //RandomNumberGenerator coordinateGenerator = new RandomNumberGenerator(0, 1000);
-        TrueRandomGenerator trng = new TrueRandomGenerator(128);
+        TrueRandomGenerator trng = new TrueRandomGenerator();
 
         System.out.println(trng.getRandomNumber(6));
     }
