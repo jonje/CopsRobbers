@@ -1,7 +1,7 @@
 package metrics;
 
 import copsandrobbers.Coordinate;
-import copsandrobbers.RandomNumberAdvanced;
+import copsandrobbers.randomgeneration.RandomNumberAdvanced;
 import copsandrobbers.randomgeneration.JavaNativeRandomNumber;
 import copsandrobbers.randomgeneration.RandomNumberGenerator;
 

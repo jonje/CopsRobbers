@@ -1,6 +1,6 @@
 package metrics;
 
-import copsandrobbers.RandomNumberAdvanced;
+import copsandrobbers.randomgeneration.RandomNumberAdvanced;
 import copsandrobbers.randomgeneration.RandomNumberGenerator;
 
 import java.util.ArrayList;
