@@ -18,7 +18,7 @@ public class JavaNativeRandomNumber implements RandomNumberGenerator {
 
     @Override
     public int getRandomNumber(int max) {
-        return (int) rand.nextDouble() * max;
+        return (int) (rand.nextDouble() * max);
     }
 
     @Override

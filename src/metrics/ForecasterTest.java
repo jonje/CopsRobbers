@@ -2,9 +2,9 @@ package metrics;
 
 import copsandrobbers.Coordinate;
 import copsandrobbers.Forecaster;
-import copsandrobbers.RandomNumberAdvanced;
 import copsandrobbers.forecaster.PredictionResult;
 import copsandrobbers.forecaster.SomeNewForecaster;
+import copsandrobbers.randomgeneration.RandomNumberAdvanced;
 import copsandrobbers.randomgeneration.RandomNumberGenerator;
 
 import java.util.Arrays;

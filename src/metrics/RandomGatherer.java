@@ -1,10 +1,11 @@
 package metrics;
 
+import copsandrobbers.randomgeneration.JavaNativeRandomNumber;
 import copsandrobbers.randomgeneration.RandomNumberAdvanced;
 import copsandrobbers.randomgeneration.RandomNumberGenerator;
+import copsandrobbers.randomgeneration.TrueRandomGenerator;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -14,24 +15,24 @@ public class RandomGatherer {
     public static void main(String[] args) {
         List<Integer> randomNumbers = new ArrayList<>();
 
-        int max = 1000;
+        int max = 10000;
         int duplicates = 0;
-        RandomNumberGenerator generator = new RandomNumberAdvanced(0, max);
+        int count = 0;
+        RandomNumberGenerator generator = new JavaNativeRandomNumber(max);
+        long start = System.currentTimeMillis();
         for (int i = 0; i < max; i++) {
             int temp = generator.getRandomNumber(max);
+            count += temp;
             if(randomNumbers.contains(temp)) {
                 duplicates++;
             }
             randomNumbers.add(temp);
         }
 
-        // Why is this iterator called?
-        Iterator<Integer> iterator = randomNumbers.iterator();
-        // Why aren't the 'temps' ever used? This is an incomplete sentence
-        List<Integer> temps = new ArrayList<>();
-        temps.addAll(randomNumbers);
-
+        long end = System.currentTimeMillis();
 
         System.out.println("Duplicates found: " + duplicates);
+        System.out.println("Mean for" + randomNumbers.size() + " is: " + (count / randomNumbers.size()));
+        System.out.println("Time taken in millis to run " + max + " times: " + (end - start));
     }
 }
