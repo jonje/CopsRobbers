@@ -12,7 +12,7 @@ public class SomeNewForecaster implements Forecaster {
 
     private static final int GRID_MAXIMUM = 1000;
     // the higher this number, the more dramatic the guess. Allows for rapid change in the guessing pattern
-    private final double alphaTolerance = 0.35;
+    private final double alphaTolerance = 0.10;
 
     private Coordinate initialXY = null;
 
