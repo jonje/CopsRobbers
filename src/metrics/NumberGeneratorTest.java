@@ -15,22 +15,22 @@ import copsandrobbers.randomgeneration.TrueRandomGenerator;
 public class NumberGeneratorTest {
     public static void main(String[] args) {
         //Instatiate number generator to test here
-        RandomNumberGenerator rng = new TrueRandomGenerator();
+        RandomNumberGenerator rng = new RandomNumberAdvanced(0, 1000);
 
         System.out.println("Custom");
         for(int i = 0; i < 1; i++) {
             int min = 0;
             int max = 1000;
-            int numOfPoints = 500;
+            int numOfPoints = 1000;
             System.out.println(String.format("Error is %.2f%%", monteCarloPiTest(rng, min, max, numOfPoints) * 100));
         }
 
         System.out.println("\nJava's random");
         rng = new JavaNativeRandomNumber(1000);
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 1; i++) {
             int min = 0;
             int max = 1000;
-            int numOfPoints = 10000;
+            int numOfPoints = 1000;
             System.out.println(String.format("Error is %.2f%%", monteCarloPiTest(rng, min, max, numOfPoints) * 100));
         }
 
